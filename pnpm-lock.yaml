@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@prisma/client': ^3.14.0
   '@sveltejs/adapter-auto': next
   '@sveltejs/kit': next
   eslint: ^8.12.0
@@ -9,6 +10,9 @@ specifiers:
   prettier: ^2.5.1
   prettier-plugin-svelte: ^2.5.0
   svelte: ^3.44.0
+
+dependencies:
+  '@prisma/client': 3.14.0
 
 devDependencies:
   '@sveltejs/adapter-auto': 1.0.0-next.50
@@ -75,6 +79,23 @@ packages:
       - encoding
       - supports-color
     dev: true
+
+  /@prisma/client/3.14.0:
+    resolution: {integrity: sha512-atb41UpgTR1MCst0VIbiHTMw8lmXnwUvE1KyUCAkq08+wJyjRE78Due+nSf+7uwqQn+fBFYVmoojtinhlLOSaA==}
+    engines: {node: '>=12.6'}
+    requiresBuild: true
+    peerDependencies:
+      prisma: '*'
+    peerDependenciesMeta:
+      prisma:
+        optional: true
+    dependencies:
+      '@prisma/engines-version': 3.14.0-36.2b0c12756921c891fec4f68d9444e18c7d5d4a6a
+    dev: false
+
+  /@prisma/engines-version/3.14.0-36.2b0c12756921c891fec4f68d9444e18c7d5d4a6a:
+    resolution: {integrity: sha512-D+yHzq4a2r2Rrd0ZOW/mTZbgDIkUkD8ofKgusEI1xPiZz60Daks+UM7Me2ty5FzH3p/TgyhBpRrfIHx+ha20RQ==}
+    dev: false
 
   /@rollup/pluginutils/4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -1784,7 +1805,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: true
 
   /word-wrap/1.2.3:
