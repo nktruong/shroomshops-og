@@ -1,3 +1,3 @@
-<section class="text-gray-50 w-96 h-56 p-4 flex items-end rounded-xl bg-cover">
-
-</section>
+<section
+  class="flex h-56 w-96 items-end rounded-xl bg-cover p-4 text-gray-50"
+/>
