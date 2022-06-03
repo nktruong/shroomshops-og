@@ -10,27 +10,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Owner {
-  id       Int    @id @default(autoincrement())
-  username String @unique
-  altname  String @unique
-  color    String
-  shops    Shop[]
-}
-
 model Shop {
   id          Int       @id @default(autoincrement())
-  userId      Int       @unique
-  owner       Owner     @relation(fields: [userId], references: [id])
-  name        String    @unique
+  owner       String
+  name        String
   description String
   products    Product[]
 }
 
 model Product {
   id     Int    @id @default(autoincrement())
-  userId Int    @unique
   item   String
   price  String
-  Shop   Shop   @relation(fields: [userId], references: [id])
+  shop   Shop   @relation(fields: [shopId], references: [id])
+  shopId Int
 }
