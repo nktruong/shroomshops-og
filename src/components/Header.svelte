@@ -8,7 +8,9 @@
     </button>
   </section>
   <section class="text-center pt-10 max-w-md m-auto">
-    <h1 class="text-5xl font-gloria">Shroomshops</h1>
+    <h1 class="text-5xl font-gloria">
+      <a href="../">Shroomshops</a>
+    </h1>
     <p class="text-xl font-inter pt-6">
       Easily supply yourself with all the Shroomhearth goods you need for your
       journey!
