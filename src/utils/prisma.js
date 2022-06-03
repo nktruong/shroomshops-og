@@ -12,6 +12,7 @@ export async function getShops() {
   return shops.map((shop) => {
     return {
       id: shop.id,
+      slug: shop.slug,
       owner: shop.owner,
       name: shop.name,
       description: shop.description,
@@ -21,7 +22,7 @@ export async function getShops() {
 
 export async function getProducts( params ) {
   const products = await prisma.product.findMany({
-    where: { shopId: Number(params.slug) }
+    where: { shopSlug: params.slug }
   })
   console.log(params)
 

@@ -12,16 +12,17 @@ datasource db {
 
 model Shop {
   id          Int       @id @default(autoincrement())
+  slug        String    @unique
   owner       String
-  name        String
+  name        String    @unique
   description String
   products    Product[]
 }
 
 model Product {
-  id     Int    @id @default(autoincrement())
-  item   String
-  price  String
-  shop   Shop   @relation(fields: [shopId], references: [id])
-  shopId Int
+  id       Int    @id @default(autoincrement())
+  item     String
+  price    String
+  shop     Shop   @relation(fields: [shopSlug], references: [slug])
+  shopSlug String
 }
