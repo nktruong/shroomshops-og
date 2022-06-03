@@ -10,22 +10,22 @@ export async function getShops() {
   })
 
   return shops.map((shop) => {
-
-    console.log(JSON.stringify(shop.products[0].item))
-
     return {
       id: shop.id,
       owner: shop.owner,
       name: shop.name,
       description: shop.description,
-      productName: shop.products[0].item,
-      productPrice: shop.products[0].price,
     }
   })
 }
 
-export async function getProducts() {
-  const products = await prisma.product.findMany({})
+export async function getProducts( params ) {
+  const products = await prisma.product.findMany({
+    where: { shopId: Number(params.slug) }
+  })
+  console.log(params)
+
+  // console.log(products)
 
   return products.map((product) => {
     return {
