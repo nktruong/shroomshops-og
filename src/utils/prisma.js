@@ -36,3 +36,28 @@ export async function getProducts( params ) {
     }
   })
 }
+
+export async function getShopProducts(params){
+  const shop = await prisma.shop.findFirst({
+    where: {slug: params.slug}
+  })
+
+  const products = await prisma.product.findMany({
+    where: { shopSlug: params.slug},
+    orderBy: { item: 'desc' }
+  })
+
+  if(!shop || !products){
+    return { status: 404 }
+  }
+
+  const shopProducts = products.map((product) => {
+    return {
+      id: product.id,
+      name: product.item,
+      price: product.price,
+    }
+  })
+
+  return { shop, products: shopProducts}
+}

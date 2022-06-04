@@ -1,16 +1,11 @@
-import { getProducts } from "../../utils/prisma";
+import { getShopProducts } from "../../utils/prisma";
 
 export async function get({params}) {
-  const products = await getProducts(params)
-
-  // if no shops were obtained, return bad request
-  if (!products) {
-    return { status: 400 }
-  }
+  const { shop, products } = await getShopProducts(params)
 
   return {
     headers: { 'Content-Type': 'application/json'},
     status: 200,
-    body: { products },
+    body: { shop, products },
   }
 }
