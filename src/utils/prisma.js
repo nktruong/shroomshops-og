@@ -12,6 +12,7 @@ export async function getShops() {
   return shops.map((shop) => {
     return {
       id: shop.id,
+      image: shop.image,
       slug: shop.slug,
       owner: shop.owner,
       name: shop.name,
@@ -54,6 +55,7 @@ export async function getShopProducts(params){
   const shopProducts = products.map((product) => {
     return {
       id: product.id,
+      image: product.image,
       name: product.item,
       price: product.price,
     }
