@@ -11,18 +11,23 @@ datasource db {
 }
 
 model Shop {
-  id          Int       @id @default(autoincrement())
-  slug        String    @unique
-  owner       String
-  name        String    @unique
-  description String
-  products    Product[]
+  id              Int       @id @default(autoincrement())
+  owner           String
+  name            String    @unique
+  slug            String    @unique
+  description     String
+  image           String    @unique
+  products        Product[]
+  conversionRates String
+  coordinates     String
 }
 
 model Product {
-  id       Int    @id @default(autoincrement())
+  id       Int     @id @default(autoincrement())
   item     String
   price    String
-  shop     Shop   @relation(fields: [shopSlug], references: [slug])
+  image    String
+  shop     Shop    @relation(fields: [shopSlug], references: [slug])
   shopSlug String
+  inStock  Boolean
 }
