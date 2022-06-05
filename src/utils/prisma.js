@@ -6,7 +6,8 @@ export async function getShops() {
   const shops = await prisma.shop.findMany({
     include: {
       products: true,
-    }
+    },
+    orderBy: { name: 'asc' }
   })
 
   return shops.map((shop) => {
@@ -21,11 +22,13 @@ export async function getShops() {
   })
 }
 
-export async function getProducts( params ) {
+export async function getProducts( ) {
   const products = await prisma.product.findMany({
-    where: { shopSlug: params.slug }
+    include: {
+      shop: true
+    },
+    orderBy: { item : 'asc'},
   })
-  console.log(params)
 
   // console.log(products)
 
@@ -33,7 +36,10 @@ export async function getProducts( params ) {
     return {
       id: product.id,
       name: product.item,
-      price: product.price
+      image: product.image,
+      price: product.price,
+      shopName: product.shop.name,
+      shopSlug: product.shopSlug,
     }
   })
 }
@@ -45,7 +51,7 @@ export async function getShopProducts(params){
 
   const products = await prisma.product.findMany({
     where: { shopSlug: params.slug},
-    orderBy: { item: 'desc' }
+    orderBy: { item: 'asc' }
   })
 
   if(!shop || !products){
